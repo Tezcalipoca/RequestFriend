@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">RequestFriend</string>
+    <!--    String TextView-->
+    <string name="text_email">Email</string>
+    <string name="text_password">Mật khẩu</string>
+    <string name="text_username">Tên người dùng</string>
+    <!--    String Button-->
+    <string name="button_signup">ĐĂNG KÝ</string>
+    <string name="button_signin">ĐĂNG NHẬP</string>
 </resources>
