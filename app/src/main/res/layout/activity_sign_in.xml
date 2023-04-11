@@ -146,7 +146,7 @@
                 android:layout_weight="1"
                 android:layout_marginHorizontal="20dp"
                 android:src="@drawable/icon_google"
-                android:background="@color/white"
+                android:background="@drawable/background_button_ggfb"
                 android:padding="8dp"
                 app:backgroundTint="@color/background_button"
                 app:cornerRadius="8dp"/>
@@ -157,7 +157,7 @@
                 android:layout_weight="1"
                 android:layout_marginHorizontal="20dp"
                 android:src="@drawable/icon_facebook"
-                android:background="@color/white"
+                android:background="@drawable/background_button_ggfb"
                 android:layout_gravity="end"
                 android:padding="8dp"
                 app:backgroundTint="@color/background_button"

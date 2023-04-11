@@ -77,7 +77,7 @@ public class SignUp extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
                                     if (task.isSuccessful()) {
-                                        SignInMethodQueryResult result =task.getResult();
+                                        SignInMethodQueryResult result = task.getResult();
                                         boolean emailExists = result.getSignInMethods().size() > 0;
                                         if (emailExists) {
                                             dialog.dismiss();
@@ -90,7 +90,7 @@ public class SignUp extends AppCompatActivity {
                                                             dialog.dismiss();
                                                             if (task.isSuccessful()) {
                                                                 String userID = task.getResult().getUser().getUid();
-                                                                Users users = new Users(edtUserName.getText().toString().trim(), edtEmail.getText().toString().trim(), edtPassword.getText().toString().trim(), userID,"Offline");
+                                                                Users users = new Users(edtUserName.getText().toString().trim(), edtEmail.getText().toString().trim(), edtPassword.getText().toString().trim(), userID, "Offline");
                                                                 mUserReference.child(userID).setValue(users);
                                                                 Toast.makeText(SignUp.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
                                                                 Intent intent = new Intent(SignUp.this, SignIn.class);
