@@ -5,6 +5,13 @@
     <string name="text_password">Mật khẩu</string>
     <string name="text_username">Tên người dùng</string>
     <!--    String Button-->
-    <string name="button_signup">ĐĂNG KÝ</string>
-    <string name="button_signin">ĐĂNG NHẬP</string>
+    <string name="button_signup">Đăng ký</string>
+    <string name="button_signin">Đăng nhập</string>
+    <string name="button_cancel">Hủy</string>
+    <!--String Action-->
+    <string name="action_contacts">Người dùng</string>
+    <string name="action_friends">Bạn bè</string>
+    <string name="action_logout">Đăng xuất</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

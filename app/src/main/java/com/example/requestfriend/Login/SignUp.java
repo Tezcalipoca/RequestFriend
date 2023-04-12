@@ -49,7 +49,7 @@ public class SignUp extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-        mUserReference = FirebaseDatabase.getInstance().getReference();
+        mUserReference = FirebaseDatabase.getInstance().getReference().child("Users");
     }
 
     private void setEvent() {
@@ -61,15 +61,15 @@ public class SignUp extends AppCompatActivity {
                 dialog.setTitle("Đăng ký");
                 dialog.setMessage("Đang tạo tài khoản cho bạn");
                 if (edtUserName.getText().toString().isEmpty()) {
-                    Toast.makeText(SignUp.this, "Không được để trống Tên người dùng", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, "Vui lòng nhập Tên người dùng", Toast.LENGTH_SHORT).show();
                 } else if (edtEmail.getText().toString().isEmpty()) {
-                    Toast.makeText(SignUp.this, "Không được để trống Email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, "Vui lòng nhập Email", Toast.LENGTH_SHORT).show();
                 } else if (edtPassword.getText().toString().isEmpty()) {
-                    Toast.makeText(SignUp.this, "Không được để trống Mật khẩu", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, "Vui lòng nhập Mật khẩu", Toast.LENGTH_SHORT).show();
                 } else if (edtConfirmPassword.getText().toString().isEmpty()) {
-                    Toast.makeText(SignUp.this, "Không được để trống Xác nhận mật khẩu", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, "Vui lòng nhập Xác nhận mật khẩu", Toast.LENGTH_SHORT).show();
                 } else if (!edtConfirmPassword.getText().toString().trim().equals(edtPassword.getText().toString().trim())) {
-                    Toast.makeText(SignUp.this, "Không được để trống Email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, "Xác nhận mật khẩu không chính xác, vui lòng kiểm tra lại", Toast.LENGTH_SHORT).show();
                 } else {
                     dialog.show();
                     mAuth.fetchSignInMethodsForEmail(edtEmail.getText().toString().trim()).
