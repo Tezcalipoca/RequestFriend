@@ -8,10 +8,13 @@
     <string name="button_signup">Đăng ký</string>
     <string name="button_signin">Đăng nhập</string>
     <string name="button_cancel">Hủy</string>
+    <string name="button_update_profile">Cập nhật</string>
     <!--String Action-->
     <string name="action_contacts">Người dùng</string>
     <string name="action_friends">Bạn bè</string>
     <string name="action_logout">Đăng xuất</string>
+<!--    String Text Description-->
+    <string name="description_updateAvatar">Cập nhật ảnh đại diện</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

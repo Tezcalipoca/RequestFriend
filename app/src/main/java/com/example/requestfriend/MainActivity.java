@@ -28,6 +28,7 @@ import com.example.requestfriend.Fragment.FriendFragment;
 import com.example.requestfriend.Fragment.ListUserFragment;
 import com.example.requestfriend.Login.SignIn;
 import com.example.requestfriend.Models.Users;
+import com.example.requestfriend.View.MyProfile;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         loadHeaderNavigation();  // Tải thông tin cho HeaderNavigation
         setActionDrawerToggle(); //Xử lý cho DrawerToggle
         actionToolbar(); //Xử lý cho Toolbar
+        actionToolbarHeaderNavigation(); //Xử lý cho Toolbar
         replaceFragment(new FriendFragment());
         setTitleToolBar();
         bottomNavigation();
@@ -92,6 +94,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         CircleImageView nav_header_userPhoto = (CircleImageView) headerNavigation.findViewById(R.id.nav_header_userPhoto);
         TextView nav_header_userName = (TextView) headerNavigation.findViewById(R.id.nav_header_userName);
         TextView nav_header_userEmail = (TextView) headerNavigation.findViewById(R.id.nav_header_userEmail);
+        headerNavigation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MyProfile.class);
+                startActivity(intent);
+            }
+        });
 
         mUserReference.child(mUser.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
@@ -117,6 +126,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.syncState();
     }
 
+    private void actionToolbarHeaderNavigation() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
     private void actionToolbar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -31,7 +31,7 @@
             android:background="@drawable/frame_textview"
             android:layout_marginVertical="8dp"
             android:layout_gravity="center"
-            android:hint="Nhập"
+            android:hint="Nhập Email"
             android:inputType="textEmailAddress"
             android:textColorHint="@color/light_grey"/>
         <TextView
@@ -52,6 +52,14 @@
             android:textColorHint="@color/light_grey"
             android:inputType="textPassword"
             />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nhớ mật khẩu"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/grey"
+                android:id="@+id/cbRememberPassword"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,7 +1,7 @@
 package com.example.requestfriend.Models;
 
 public class Users {
-    String profilePic, userName, email, password, userID,  describe , gender;
+    String profilePic, userName, email, password, userID;
 
     public Users() {
 
@@ -13,8 +13,6 @@ public class Users {
         this.email = email;
         this.password = password;
         this.userID = userID;
-        this.describe = describe;
-        this.gender = gender;
     }
 
     public Users(String userName, String email, String password, String userID, String statusActivity) {
@@ -22,14 +20,6 @@ public class Users {
         this.email = email;
         this.password = password;
         this.userID = userID;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
 
     public String getProfilePic() {
@@ -70,13 +60,5 @@ public class Users {
 
     public void setUserID(String userID) {
         this.userID = userID;
-    }
-
-    public String getDescribe() {
-        return describe;
-    }
-
-    public void setDescribe(String describe) {
-        this.describe= describe;
     }
 }
