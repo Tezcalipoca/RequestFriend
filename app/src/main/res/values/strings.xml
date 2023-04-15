@@ -4,11 +4,18 @@
     <string name="text_email">Email</string>
     <string name="text_password">Mật khẩu</string>
     <string name="text_username">Tên người dùng</string>
+    <string name="text_view_profile">Xem trang cá nhân</string>
     <!--    String Button-->
     <string name="button_signup">Đăng ký</string>
     <string name="button_signin">Đăng nhập</string>
     <string name="button_cancel">Hủy</string>
     <string name="button_update_profile">Cập nhật</string>
+    <string name="button_send_friend_request">Thêm bạn bè</string>
+    <string name="button_send_message">Gửi tin nhắn</string>
+    <string name="button_cancel_send">Hủy yêu cầu</string>
+    <string name="button_unfriend">Hủy kết bạn</string>
+    <string name="button_accept_friend_request">Chấp nhận</string>
+    <string name="button_decline">Từ chối</string>
     <!--String Action-->
     <string name="action_contacts">Người dùng</string>
     <string name="action_friends">Bạn bè</string>
