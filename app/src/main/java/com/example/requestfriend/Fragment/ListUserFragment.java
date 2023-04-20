@@ -25,17 +25,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ListUserFragment extends Fragment {
     RecyclerView rvListContact;
     androidx.appcompat.widget.SearchView action_searchUser;
     ArrayList<Users> listUsers = new ArrayList<>();
+    List<Users> tempUsers = new ArrayList<>();
     ContactAdapter listUsersAdapter;
 
     FirebaseAuth mAuth;
     FirebaseUser mUser;
-    DatabaseReference mUserReference;
+    DatabaseReference mUserReference, mFriendReference;
 
 
     @Override
@@ -53,10 +55,11 @@ public class ListUserFragment extends Fragment {
         action_searchUser = view.findViewById(R.id.action_searchUser);
         action_searchUser.clearFocus();
         mAuth = FirebaseAuth.getInstance();
-        mUser=mAuth.getCurrentUser();
+        mUser = mAuth.getCurrentUser();
         mUserReference = FirebaseDatabase.getInstance().getReference().child("Users");
+        mFriendReference = FirebaseDatabase.getInstance().getReference().child("Friends");
         // Khởi tạo adapter
-        listUsersAdapter = new ContactAdapter(getContext(),listUsers);
+        listUsersAdapter = new ContactAdapter(getContext(), listUsers);
         rvListContact.setAdapter(listUsersAdapter);
         // Tạo ngăn cách giữa 2 đối tượng
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
@@ -87,18 +90,41 @@ public class ListUserFragment extends Fragment {
         mUserReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listUsers.clear();
+                tempUsers.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Users users = dataSnapshot.getValue(Users.class);
-                    mAuth = FirebaseAuth.getInstance();
-                    mUser = mAuth.getCurrentUser();
-                    String userEmail = users.getEmail();
-                    if (mUser != null && !users.getEmail().equals(mUser.getEmail())) {
-                        users.setUserID(dataSnapshot.getKey());
-                        listUsers.add(users);
+                    if (mUser != null && users != null && !mUser.getEmail().equals(users.getEmail())) {
+                        tempUsers.add(users);
                     }
                 }
-                listUsersAdapter.notifyDataSetChanged();
+                mFriendReference.child(mUser.getUid()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        listUsers.clear();
+                        if (snapshot.exists()) {
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                String friendID = dataSnapshot.getKey();
+
+                                for (int i = 0; i < tempUsers.size(); i++) {
+                                    Users users = tempUsers.get(i);
+
+                                    if (users.getUserID().equals(friendID)) {
+                                        tempUsers.remove(users);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        listUsers.clear();
+                        listUsers.addAll(tempUsers);
+                        listUsersAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
 
             @Override

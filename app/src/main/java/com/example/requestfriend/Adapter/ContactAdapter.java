@@ -32,19 +32,20 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     public ContactAdapter(Context context, ArrayList<Users> listContacts) {
         this.context = context;
         this.listContacts = listContacts;
+        this.listFilterContacts = listContacts;
     }
 
     @NonNull
     @Override
     public ContactAdapter.ContactViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View mView = LayoutInflater.from(context).inflate(R.layout.item_view_single_contact,parent,false);
+        View mView = LayoutInflater.from(context).inflate(R.layout.item_view_single_contact, parent, false);
         return new ContactViewHolder(mView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ContactAdapter.ContactViewHolder holder, int position) {
         Users users = listContacts.get(position);
-        if (users!=null) {
+        if (users != null) {
             Picasso.get().load(users.getProfilePic()).placeholder(R.drawable.default_avatar).into(holder.civAvatarItemContact);
             holder.tvItemContactName.setText(users.getUserName());
             holder.tvItemContactEmail.setText(users.getEmail());
@@ -100,6 +101,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
                 filterResults.values = listContacts;
                 return filterResults;
             }
+
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
                 listContacts = (ArrayList<Users>) filterResults.values;
